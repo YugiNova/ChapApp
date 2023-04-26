@@ -16,7 +16,7 @@ const SignOut = () => {
 
     const SignOut = async () => {
         await signOut(auth)
-        navigate("/");
+        navigate("/ChapApp/");
     }
 
     useEffect(()=>{
