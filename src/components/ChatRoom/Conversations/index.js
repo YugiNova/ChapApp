@@ -1,6 +1,17 @@
-import { FieldPath, collection, doc, onSnapshot, query, where } from "firebase/firestore";
+import {
+  FieldPath,
+  collection,
+  doc,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
-import { getConversationList, getTheme, getUser } from "../../../redux/selector";
+import {
+  getConversationList,
+  getTheme,
+  getUser,
+} from "../../../redux/selector";
 import { db } from "../../../firebase/config";
 import { UpdateConversationList } from "../../../redux/action";
 import { useEffect } from "react";
@@ -16,19 +27,27 @@ const Conversations = () => {
 
   const getConversList = () => {
     let conversList = [];
-    const q = query(collection(db, "conversations"), where("id", 'in',user.conversations));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+
+    if (user.conversations.length !== 0) {
+      const q = query(
+        collection(db, "conversations"),
+        where("id", "in", user.conversations)
+      );
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
         let conversList = [];
-      querySnapshot.forEach((doc) => {
-        conversList.push({value:doc.data(),id: doc.id});
+        querySnapshot.forEach((doc) => {
+          conversList.push({ value: doc.data(), id: doc.id });
+        });
+        //   console.log(conversList);
+        dispatch(UpdateConversationList(conversList));
       });
-    //   console.log(conversList);
-      dispatch(UpdateConversationList(conversList));
-    });
+    }
   };
 
   useEffect(() => {
-    getConversList();
+    if(user.conversations){
+      getConversList();
+    }
   }, []);
 
   useEffect(() => {
@@ -38,12 +57,12 @@ const Conversations = () => {
   return (
     <Container theme={theme}>
       <Header theme={theme}>
-          <Title theme={theme}>Chats</Title>
-          <SearchBar theme={theme} suffix={<SearchOutlined />} />
+        <Title theme={theme}>Chats</Title>
+        <SearchBar theme={theme} suffix={<SearchOutlined />} />
       </Header>
       <List theme={theme}>
-        {conversationList.map((item) => {
-          return <ConversationItem theme={theme} conversation={item?item:""} user={user} />;
+        {conversationList === []? "": conversationList.map((item) => {
+          return <ConversationItem theme={theme} conversation={item?item:[]} user={user} />;
         })}
       </List>
     </Container>

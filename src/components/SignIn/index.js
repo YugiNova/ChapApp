@@ -32,7 +32,7 @@ const SignIn = () => {
         data.email,
         data.password
       )
-      navigate("/Chat");
+      navigate("/Chat/Conversations");
     } catch (error)  {
       console.log(error.message);
     }

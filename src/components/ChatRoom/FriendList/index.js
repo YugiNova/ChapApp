@@ -42,8 +42,10 @@ const FriendList = () => {
   };
 
   useEffect(() => {
-    getFriendsName();
-    setInviteCount(user.recieved_invite.length);
+    if(user.recieved_invite){
+      getFriendsName();
+      setInviteCount(user.recieved_invite.length);
+    }
   }, [user]);
 
   const onAddFriend = () => {
@@ -87,18 +89,6 @@ const FriendList = () => {
       />
 
       <List theme={theme}>
-        {friendList.map((item) => {
-          return <FriendCard friend={item} theme={theme} />;
-        })}
-        {friendList.map((item) => {
-          return <FriendCard friend={item} theme={theme} />;
-        })}
-        {friendList.map((item) => {
-          return <FriendCard friend={item} theme={theme} />;
-        })}
-        {friendList.map((item) => {
-          return <FriendCard friend={item} theme={theme} />;
-        })}
         {friendList.map((item) => {
           return <FriendCard friend={item} theme={theme} />;
         })}

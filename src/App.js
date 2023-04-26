@@ -11,6 +11,7 @@ import store from './redux/reducer';
 import FriendList from './components/ChatRoom/FriendList';
 import Conversations from './components/ChatRoom/Conversations';
 import GroupsChat from './components/ChatRoom/GroupsChat';
+import Welcome from './components/ChatRoom/Welcome';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
         path: "Conversations",
         element: <Conversations/>,
         children: [
-          {path: "Messages/:id"}
+          {path: "Messages/:id"},
+          {
+            path:"Messages/welcome",
+            element: <Welcome/>
+          }
         ]
       },
       {

@@ -9,7 +9,7 @@ import { getAuth } from 'firebase/auth';
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+  apiKey: "AIzaSyAlBYa1Hr2hen_Sj5vD_zLJSw0IHeoFI8s",
   authDomain: "chat-app-48d4c.firebaseapp.com",
   projectId: "chat-app-48d4c",
   storageBucket: "chat-app-48d4c.appspot.com",

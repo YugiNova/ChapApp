@@ -20,19 +20,20 @@ const ModalInvitation = ({open, setOpen, user,userProfileRef}) => {
 
     const getInvitation = async () => {
         let inviteArr = [];
-        
-        for(let i = 0; i< user.recieved_invite.length;i++){
-            const docSnap = await getDoc(doc(db,"users_profile",user.recieved_invite[i]))
-            inviteArr.push({value: docSnap.data(), id: user.recieved_invite[i]})
-            console.log(docSnap.data());
-        }
+            for(let i = 0; i< user.recieved_invite.length;i++){
+                const docSnap = await getDoc(doc(db,"users_profile",user.recieved_invite[i]))
+                inviteArr.push({value: docSnap.data(), id: user.recieved_invite[i]})
+                console.log(docSnap.data());
+            }
         
         setInviteList(inviteArr);
     }
 
     useEffect(()=> {
-        getInvitation()
-        console.log(inviteList);
+        if(user.recieved_invite){
+            getInvitation()
+            console.log(inviteList);
+        }
     },[user])
 
     const onAccept = async (selectedUser,selectedUserID) => {

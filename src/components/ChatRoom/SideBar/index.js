@@ -19,7 +19,7 @@ const SideBar = () => {
           size={"large"}
           icon={<UserOutlined />}
         />
-        <div>{auth.currentUser.name}</div>
+        <div></div>
       </UserIcon>
       <ChatGroup>
         <ChatItem theme={theme} to={"/Chat/FriendList"}><UnorderedListOutlined /></ChatItem>
