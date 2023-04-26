@@ -35,7 +35,7 @@ const PrivateRoute = ({component}) => {
 
         if(currentUser === null){
             updateUserState(currentUser.uid, currentUser);
-            navigate("/ChatApp");
+            navigate("/ChatApp/");
         }
     })
 
