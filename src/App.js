@@ -15,15 +15,15 @@ import Welcome from './components/ChatRoom/Welcome';
 
 const router = createBrowserRouter([
   {
-    path: "/ChatApp/",
+    path: "/ChapApp/",
     element: <PublicRoute component={<SignInPage/>}/>  
   },
   {
-    path: "/ChatApp/SignUp",
+    path: "/ChapApp/SignUp",
     element: <PublicRoute component={<SignUpPage/>}/>  
   },
   {
-    path: "/ChatApp/Chat",
+    path: "/ChapApp/Chat",
     element: <PrivateRoute component={<ChatPage/>}/>,
     children: [
       {

@@ -61,7 +61,7 @@ const ConversationItem = ({ conversation, user, theme }) => {
   },[conversation.value.lastMessage])
 
   return (
-      <ButtonConversation key={Math.random()} to={`/Chat/Conversations/Messages/${title}`} theme={theme} onClick={showConversation}>
+      <ButtonConversation key={Math.random()} to={`/ChapApp/Chat/Conversations/Messages/${title}`} theme={theme} onClick={showConversation}>
         <AvatarIcon theme={theme} size={"large"} src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" />
         <Title theme={theme}>{title}</Title>
         <LastMess theme={theme}>{lastMessage}</LastMess>
