@@ -3,7 +3,7 @@ import { auth } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../redux/selector";
-import { ResetState, UpdateUser } from "../../redux/action";
+import { ResetState, UpdateConversation, UpdateConversationList, UpdateUser } from "../../redux/action";
 import { useEffect } from "react";
 
 
@@ -22,7 +22,14 @@ const PublicRoute = ({component}) => {
             role: "",
             friend_list: []
         }))
-        dispatch(ResetState());
+
+        dispatch(UpdateConversationList([]))
+        
+        dispatch(UpdateConversation({
+            id: "",
+        users: [],
+        message:[]
+        }));
     }, [])
 
     onAuthStateChanged(auth, (currentUser) => {

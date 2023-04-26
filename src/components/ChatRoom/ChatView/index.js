@@ -1,12 +1,13 @@
 import { useSelector } from "react-redux";
-import { getConversation, getUser } from "../../../redux/selector";
+import { getConversation, getTheme, getUser } from "../../../redux/selector";
 import ChatHeader from "./ChatHeader";
 import ChatBox from "./ChatBox";
 import ChatInput from "./ChatInput";
+import { Container } from "./styles";
 
 const ChatView = () => {
   const conversation = useSelector(getConversation);
-
+  const theme = useSelector(getTheme);
   const user = useSelector(getUser);
 
   //   useEffect(() => {
@@ -14,11 +15,11 @@ const ChatView = () => {
   //   }, [conversation]);
 
   return (
-    <div>
-      <ChatHeader conversation={conversation} user={user} />
-      <ChatBox conversation={conversation} user={user} />
-      <ChatInput conversation={conversation} user={user} />
-    </div>
+    <Container theme={theme}>
+      <ChatHeader theme={theme} conversation={conversation} user={user} />
+      <ChatBox theme={theme} conversation={conversation} user={user} />
+      <ChatInput theme={theme} conversation={conversation} user={user} />
+    </Container>
   );
 };
 

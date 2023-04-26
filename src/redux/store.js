@@ -18,6 +18,16 @@ const initState = {
         message:[
 
         ]
+    },
+    theme: {
+        primaryColor: "#7269ef",
+        sidebarBg: "#36404a",
+        listBg: "#303841",
+        chatBg: "#262e35",
+        primaryFont: "white",
+        secondaryFont: "#a6b0cf",
+        listItemActive: "#36404a",
+        sidebarItemActive: "#262e35",
     }
 }
 
@@ -47,7 +57,7 @@ const rootReducer = (state = initState,action) => {
                 }
             }
         case `resetState`:
-            return state;
+            return {};
         default:
             return state;
     }

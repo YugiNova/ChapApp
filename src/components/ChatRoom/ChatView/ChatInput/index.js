@@ -1,10 +1,11 @@
-import { Button, Input } from "antd";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { SendOutlined } from "@ant-design/icons";
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../../../../firebase/config";
+import { ButtonSend, Container, InputChat } from "./styles";
 
-const ChatInput = ({ conversation, user }) => {
-    const [mess, setMess] = useState();
+const ChatInput = ({ conversation, user, theme }) => {
+  const [mess, setMess] = useState();
   //Send Message
   const onChange = (e) => {
     setMess(e.target.value);
@@ -20,14 +21,18 @@ const ChatInput = ({ conversation, user }) => {
       }
     );
 
+    await updateDoc(doc(db,"conversations",conversation.id),{
+      lastMessage: mess
+    })
+
     setMess("");
   };
 
   return (
-    <div>
-      <Input onChange={onChange} value={mess} />
-      <Button onClick={onSend}>Send</Button>
-    </div>
+    <Container theme={theme}>
+      <InputChat  theme={theme} onChange={onChange} value={mess} />
+      <ButtonSend  theme={theme} onClick={onSend}><SendOutlined /></ButtonSend>
+    </Container>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {
-  Avatar,
+  AvatarIcon,
   ButtonConversation,
   Container,
   LastMess,
@@ -12,9 +12,10 @@ import { useDispatch } from "react-redux";
 import { UpdateConversation } from "../../../../redux/action";
 import { queries } from "@testing-library/react";
 
-const ConversationItem = ({ conversation, user }) => {
+const ConversationItem = ({ conversation, user, theme }) => {
   const [title, setTitle] = useState();
   const dispatch = useDispatch();
+  const [lastMessage,setLastMessage] = useState("");
 
   const getFriendName = () => {
     const frienName = conversation.value.users.filter((item) => {
@@ -53,16 +54,19 @@ const ConversationItem = ({ conversation, user }) => {
     );
   };
 
+  useEffect(()=>{
+    if(conversation.value.lastMessage.length >= 10){
+      setLastMessage(conversation.value.lastMessage.slice(0, 10) + "...")
+    }
+    else setLastMessage(conversation.value.lastMessage)
+  },[conversation.value.lastMessage])
+
   return (
-    <Container>
-      <ButtonConversation onClick={showConversation}>
-        <Avatar>
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" />
-        </Avatar>
-        <Title>{title}</Title>
-        <LastMess>{conversation.value.lastMessage}</LastMess>
+      <ButtonConversation key={Math.random()} to={`/Chat/Conversations/Messages/${title}`} theme={theme} onClick={showConversation}>
+        <AvatarIcon theme={theme} size={"large"} src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" />
+        <Title theme={theme}>{title}</Title>
+        <LastMess theme={theme}>{lastMessage}</LastMess>
       </ButtonConversation>
-    </Container>
   );
 };
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    width: 100%;
     display: grid;
     grid-template-columns: 3rem 1fr;
     grid-template-rows: 1fr 1fr;
@@ -8,6 +9,14 @@ export const Container = styled.div`
     align-items: center;
     row-gap: 0;
     column-gap: 0.5rem;
+
+    background-color: transparent;
+    padding:0.5rem;
+    border-radius: 1rem;
+
+    &:hover{
+        background: ${props => props.theme.listItemActive};
+    }
 `
 
 export const Avatar = styled.div`
@@ -26,6 +35,7 @@ export const Name = styled.h3`
     grid-row: 1/2;
     margin: 0;
     font-size: 1rem;
+    color: ${props => props.theme.primaryFont};
 `
 
 export const Email = styled.h3`
@@ -34,6 +44,7 @@ export const Email = styled.h3`
     margin: 0;
     font-size: 1rem;
     font-weight: normal;
+    color: ${props => props.theme.secondaryFont};
 `
 
 

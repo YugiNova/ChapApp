@@ -21,7 +21,7 @@ export const UpdateConversation = (data) => {
 
 export const ResetState = (data) => {
     return{
-        type:``,
+        type:`resetState`,
         payload: data
     }
 }

@@ -2,10 +2,13 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../../../../firebase/config";
 import { useDispatch } from "react-redux";
 import { UpdateConversation } from "../../../../redux/action";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import MessageBox from "../MessageBox";
+import { ChatWrapper, Container } from "./styles";
 
 const ChatBox = ({ conversation }) => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const endRef = useRef(null);
 
   //Get real-time messages
   const getRealTimeMessaages = async () => {
@@ -26,7 +29,11 @@ const ChatBox = ({ conversation }) => {
           message: messagesArr,
         })
       );
+
+      endRef.current?.scrollIntoView();
     });
+
+    
   };
 
   useEffect(() => {
@@ -34,11 +41,14 @@ const ChatBox = ({ conversation }) => {
   }, [conversation.id]);
 
   return (
-    <div>
+    <Container className="messagesBox">
+      <ChatWrapper>
       {conversation.message.map((item) => {
-        return <h1>{item.text}</h1>;
+        return <MessageBox message={item}/>;
       })}
-    </div>
+      <div ref={endRef}></div> 
+      </ChatWrapper>
+    </Container>
   );
 };
 

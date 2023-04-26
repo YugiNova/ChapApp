@@ -4,12 +4,15 @@ import { auth } from "../../../../firebase/config";
 import { signOut } from "firebase/auth";
 import { useEffect } from "react";
 import { Button } from "antd";
-import { getUser } from "../../../../redux/selector";
+import { getTheme, getUser } from "../../../../redux/selector";
+import { MdLogout } from "react-icons/md";
+import { Container } from "./styles";
 
 
 const SignOut = () => {
     const navigate = useNavigate();
-    const user = useSelector(getUser)
+    const user = useSelector(getUser);
+    const theme = useSelector(getTheme)
 
     const SignOut = async () => {
         await signOut(auth)
@@ -22,7 +25,7 @@ const SignOut = () => {
 
 
     return(
-        <Button onClick={SignOut}>Sign Out</Button>
+        <Container theme={theme} onClick={SignOut}><MdLogout /></Container>
     )
 }
 export default SignOut;

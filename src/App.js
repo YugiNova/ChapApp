@@ -31,7 +31,10 @@ const router = createBrowserRouter([
       },
       {
         path: "Conversations",
-        element: <Conversations/>
+        element: <Conversations/>,
+        children: [
+          {path: "Messages/:id"}
+        ]
       },
       {
         path: "GroupsChat",
