@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/ChapApp/static/css/main.dc0f9b6f.css",
-    "main.js": "/ChapApp/static/js/main.bbe1acbe.js",
+    "main.js": "/ChapApp/static/js/main.63068346.js",
     "static/js/787.7ea0274a.chunk.js": "/ChapApp/static/js/787.7ea0274a.chunk.js",
     "static/media/logo.svg": "/ChapApp/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/ChapApp/index.html",
     "main.dc0f9b6f.css.map": "/ChapApp/static/css/main.dc0f9b6f.css.map",
-    "main.bbe1acbe.js.map": "/ChapApp/static/js/main.bbe1acbe.js.map",
+    "main.63068346.js.map": "/ChapApp/static/js/main.63068346.js.map",
     "787.7ea0274a.chunk.js.map": "/ChapApp/static/js/787.7ea0274a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.dc0f9b6f.css",
-    "static/js/main.bbe1acbe.js"
+    "static/js/main.63068346.js"
   ]
 }
