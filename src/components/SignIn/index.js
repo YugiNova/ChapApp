@@ -58,7 +58,7 @@ const SignIn = () => {
         </InputBox>
       </FormContainer>
       <SubmitButton onClick={HandleSignIn}>Sign In</SubmitButton>
-      <Register>You don't have account? <Link to="/SignUp">Register</Link></Register>
+      <Register>You don't have account? <Link to="/ChatApp/SignUp">Register</Link></Register>
     </Container>
   );
 };

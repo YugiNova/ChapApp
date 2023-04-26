@@ -121,7 +121,7 @@ const SignUp = () => {
       </FormContainer>
       <SubmitButton onClick={HandleSignUp}>Sign Up</SubmitButton>
       <Register>
-        Already have account? <Link to="/ChapApp/">Sign in</Link>
+        Already have account? <Link to="/ChatApp/">Sign in</Link>
       </Register>
     </Container>
   );

@@ -15,7 +15,7 @@ import Welcome from './components/ChatRoom/Welcome';
 
 const router = createBrowserRouter([
   {
-    path: "/ChapApp/",
+    path: "/ChatApp/",
     element: <PublicRoute component={<SignInPage/>}/>  
   },
   {
