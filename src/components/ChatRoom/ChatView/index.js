@@ -15,16 +15,6 @@ const ChatView = () => {
   const user = useSelector(getUser);
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    if(conversation.id !== ""){
-      navigate("/Chat/Conversations/Messages/Welcome")
-    }
-    else{
-
-    }
-
-  },[conversation.id])
-
   return (
     <Container theme={theme}>
         <ChatHeader theme={theme} conversation={conversation} user={user} />

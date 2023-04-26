@@ -22,9 +22,9 @@ const SideBar = () => {
         <div></div>
       </UserIcon>
       <ChatGroup>
-        <ChatItem theme={theme} to={"/Chat/FriendList"}><UnorderedListOutlined /></ChatItem>
-        <ChatItem theme={theme} to={"/Chat/Conversations"}><MessageOutlined /></ChatItem>
-        <ChatItem theme={theme} to={"/Chat/GroupsChat"}><UsergroupAddOutlined /></ChatItem>
+        <ChatItem theme={theme} to={"/ChapApp/Chat/FriendList"}><UnorderedListOutlined /></ChatItem>
+        <ChatItem theme={theme} to={"/ChapApp/Chat/Conversations"}><MessageOutlined /></ChatItem>
+        <ChatItem theme={theme} to={"/ChapApp/Chat/GroupsChat"}><UsergroupAddOutlined /></ChatItem>
       </ChatGroup>
       <SettingGroup>
         <SettingButton/>

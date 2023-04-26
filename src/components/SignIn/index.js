@@ -32,7 +32,7 @@ const SignIn = () => {
         data.email,
         data.password
       )
-      navigate("/Chat/Conversations");
+      navigate("/ChapApp/Chat/Conversations");
     } catch (error)  {
       console.log(error.message);
     }

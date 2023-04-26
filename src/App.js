@@ -19,11 +19,11 @@ const router = createBrowserRouter([
     element: <PublicRoute component={<SignInPage/>}/>  
   },
   {
-    path: "/SignUp",
+    path: "/ChatApp/SignUp",
     element: <PublicRoute component={<SignUpPage/>}/>  
   },
   {
-    path: "/Chat",
+    path: "/ChatApp/Chat",
     element: <PrivateRoute component={<ChatPage/>}/>,
     children: [
       {

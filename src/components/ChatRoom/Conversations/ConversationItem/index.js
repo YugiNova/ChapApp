@@ -10,7 +10,6 @@ import { collection, doc, getDoc, getDocs, onSnapshot, query } from "firebase/fi
 import { db } from "../../../../firebase/config";
 import { useDispatch } from "react-redux";
 import { UpdateConversation } from "../../../../redux/action";
-import { queries } from "@testing-library/react";
 
 const ConversationItem = ({ conversation, user, theme }) => {
   const [title, setTitle] = useState();
