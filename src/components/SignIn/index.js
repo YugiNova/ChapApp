@@ -1,4 +1,4 @@
-import { Button, Form } from "antd";
+import { Button, Form, message } from "antd";
 import { ButtonShowPassword, Container, FormContainer, InputBox, InputField, InputPasswordField, Placeholder, Register, ShowEye, SubmitButton, Title } from "./styles";
 import { useEffect, useState } from "react";
 import {EyeOutlined,EyeInvisibleOutlined} from "@ant-design/icons"
@@ -8,6 +8,7 @@ import { auth, db } from "../../firebase/config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const SignIn = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm();
   const [showPassword, setShowPassword] = useState("password");
   const [showPasswordIcon, setShowPasswordIcon] = useState(<EyeOutlined />);
@@ -32,15 +33,32 @@ const SignIn = () => {
         data.email,
         data.password
       )
-      navigate("/ChapApp/Chat/Conversations");
-    } catch (error)  {
-      console.log(error.message);
+      navigate("/ChapApp/Chat/FriendList");
+    } catch (errorRes)  {
+        switch(errorRes.code){
+          case "auth/user-not-found":
+            messageApi.open({
+              type: 'error',
+              content: "Email not found !",
+            });
+            break;
+          case "auth/wrong-password":
+            messageApi.open({
+              type: 'error',
+              content: "Password is incorrect !",
+            });
+            break;
+          default:
+            break;
+        }
+      console.log(errorRes.code);
     }
   }
 
 
   return (
     <Container>
+      {contextHolder}
       <Title>Welcome</Title>
       <FormContainer form={form} layout="vertical">
         <InputBox

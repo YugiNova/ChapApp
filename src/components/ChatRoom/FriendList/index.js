@@ -64,7 +64,7 @@ const FriendList = () => {
       </Header>
 
       <Options theme={theme}>
-        <FriendCount theme={theme}>30 friends</FriendCount>
+        <FriendCount theme={theme}>{user.friend_list.length} friends</FriendCount>
         <ButtonWrapper>
           <OptionButton theme={theme} onClick={onAddFriend}>
             <MdPersonAddAlt1 />

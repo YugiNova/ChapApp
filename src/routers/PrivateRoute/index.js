@@ -24,6 +24,7 @@ const PrivateRoute = ({component}) => {
                 role: userProfile.role,
                 friend_list: userProfile.friend_list,
                 recieved_invite: userProfile.recieved_invite,
+                sended_invite:userProfile.sended_invite,
                 conversations: userProfile.conversations
             }))
         });

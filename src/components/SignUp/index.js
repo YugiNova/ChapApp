@@ -39,6 +39,9 @@ const SignUp = () => {
       email: data.email,
       friend_list: [],
       imageUrl: "",
+      recieved_invite:[],
+      sended_invite:[],
+      conversations:[],
       role: "user"
     })
   }

@@ -35,7 +35,7 @@ const PublicRoute = ({component}) => {
     onAuthStateChanged(auth, (currentUser) => {
         console.log(user);
         if(currentUser){
-            navigate("/ChapApp/Chat")
+            navigate("/ChapApp/Chat/FriendList/")
         }else{
 
         }

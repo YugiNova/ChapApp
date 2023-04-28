@@ -1,89 +1,67 @@
-import { Button, Modal } from "antd"
-import { addDoc, arrayRemove, arrayUnion, collection, doc, getDoc, query, serverTimestamp, setDoc, updateDoc, where } from "firebase/firestore";
+import { Button, Modal } from "antd";
+import {
+  addDoc,
+  arrayRemove,
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  query,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { db } from "../../../../firebase/config";
 import { useState } from "react";
 import { useEffect } from "react";
 import FriendCard from "../FriendCard";
+import { List, ModalCustom, Title } from "./styles";
+import { useSelector } from "react-redux";
+import { getTheme } from "../../../../redux/selector";
+import UserCard from "./UserCard";
 
+const ModalInvitation = ({ open, setOpen, user, userProfileRef }) => {
+  const [inviteList, setInviteList] = useState([]);
+  const theme = useSelector(getTheme);
 
+  const onCancel = () => {
+    setOpen(false);
+  };
 
-const ModalInvitation = ({open, setOpen, user,userProfileRef}) => {
-    const [inviteList,setInviteList] = useState([]);
+  const onSubmit = () => {
+    setOpen(false);
+  };
 
-    const onCancel = () => {
-        setOpen(false);
+  const getInvitation = async () => {
+    let inviteArr = [];
+    for (let i = 0; i < user.recieved_invite.length; i++) {
+      const docSnap = await getDoc(
+        doc(db, "users_profile", user.recieved_invite[i])
+      );
+      inviteArr.push({ value: docSnap.data(), id: user.recieved_invite[i] });
+      console.log(docSnap.data());
     }
 
-    const onSubmit = () => {
-        setOpen(false);
+    setInviteList(inviteArr);
+  };
+
+  useEffect(() => {
+    if (user.recieved_invite) {
+      getInvitation();
+      console.log(inviteList);
     }
+  }, [user.recieved_invite]);
 
-    const getInvitation = async () => {
-        let inviteArr = [];
-            for(let i = 0; i< user.recieved_invite.length;i++){
-                const docSnap = await getDoc(doc(db,"users_profile",user.recieved_invite[i]))
-                inviteArr.push({value: docSnap.data(), id: user.recieved_invite[i]})
-                console.log(docSnap.data());
-            }
-        
-        setInviteList(inviteArr);
-    }
-
-    useEffect(()=> {
-        if(user.recieved_invite){
-            getInvitation()
-            console.log(inviteList);
-        }
-    },[user])
-
-    const onAccept = async (selectedUser,selectedUserID) => {
-        const userDocRef = doc(db, "users_profile", user.uid);
-        const userInviteDocRef = doc(db, "users_profile", selectedUserID);
-
-        const conversationRef = await addDoc(collection(db,"conversations"),{
-            title: "",
-            users: [selectedUserID,user.uid],
-            lastMessage: ""
-        })
-
-        await updateDoc(conversationRef,{
-            id: conversationRef.id
-        })
-
-        const messagesRef = doc(collection(db, "conversations", conversationRef.id, "messages"))
-        await setDoc(messagesRef,{
-            id: messagesRef.id,
-            text: "welcome",
-            createAt: serverTimestamp()
-        })
-    
-        await updateDoc(userDocRef, {
-            friend_list: arrayUnion(selectedUser.email),
-            recieved_invite: arrayRemove(selectedUserID),
-            conversations: arrayUnion(conversationRef.id)
-        });
-
-        await updateDoc(userInviteDocRef,{
-            friend_list: arrayUnion(user.email),
-            conversations: arrayUnion(conversationRef.id)
-        })
-        console.log(selectedUser + " | "  +selectedUserID);
-
-    }
-
-    return(
-        <Modal open={open} onCancel={onCancel} onOk={onSubmit}>
-            {
-                inviteList.map(item => {
-                    return(
-                        <div>
-                            <FriendCard friend={item.value}/>
-                            <Button onClick={() => {onAccept(item.value, item.id)}}>Accept</Button>
-                        </div>
-                    )
-                })
-            }
-        </Modal>
-    )
-}
+  return (
+    <ModalCustom theme={theme} open={open} onCancel={onCancel} onOk={onSubmit}>
+      <Title theme={theme}>Invitations</Title>
+      <List>
+        {inviteList.map((item) => {
+          return <UserCard userData={item} />;
+        })}
+      </List>
+    </ModalCustom>
+  );
+};
 export default ModalInvitation;

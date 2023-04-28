@@ -7,6 +7,7 @@ const initState = {
         role: "",
         friend_list: [],
         recieved_invite:[],
+        sended_invite:[],
         conversations:[]
     },
     conversationList: [
