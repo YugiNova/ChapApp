@@ -42,13 +42,21 @@ export const SearchBar = styled(Input)`
 `;
 
 export const List = styled.div`
-  width: 100%;
-  padding: 0 1rem;
+    width: 100%;
+    padding: 0 1rem;
 
-  height: calc(100vh -1rem -6.5rem);
-  overflow-y: scroll;
+    height: 70vh;
+    overflow-y: scroll;
 
-  ::-webkit-scrollbar {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: ${(props) => props.theme.primaryFont};
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ::-webkit-scrollbar {
     width: 0;
   }
-`;
+`

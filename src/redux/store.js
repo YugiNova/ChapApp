@@ -21,6 +21,7 @@ const initState = {
         ]
     },
     theme: {
+        status: "dark",
         primaryColor: "#7269ef",
         sidebarBg: "#36404a",
         listBg: "#303841",
@@ -57,8 +58,14 @@ const rootReducer = (state = initState,action) => {
                     ...action.payload
                 }
             }
-        case `resetState`:
-            return {};
+        case `theme/Update`:
+            return {
+                ...state,
+                theme: {
+                    ...state.theme,
+                    ...action.payload
+                }
+            };
         default:
             return state;
     }

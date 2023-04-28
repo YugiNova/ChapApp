@@ -25,3 +25,10 @@ export const ResetState = (data) => {
         payload: data
     }
 }
+
+export const UpdateTheme = (data) => {
+    return{
+        type:`theme/Update`,
+        payload: data
+    }
+}
