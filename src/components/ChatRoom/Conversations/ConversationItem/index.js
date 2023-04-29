@@ -9,7 +9,7 @@ import {
 import { collection, doc, getDoc, getDocs, onSnapshot, query } from "firebase/firestore";
 import { db } from "../../../../firebase/config";
 import { useDispatch } from "react-redux";
-import { UpdateConversation } from "../../../../redux/action";
+import { ShowChat, UpdateConversation } from "../../../../redux/action";
 
 const ConversationItem = ({ conversation, user, theme }) => {
   const [title, setTitle] = useState();
@@ -44,13 +44,15 @@ const ConversationItem = ({ conversation, user, theme }) => {
       messagesArr.push(doc.data())
     });
 
-    dispatch(
+    await dispatch(
       UpdateConversation({
         id: conversation.id,
         users: conversation.value.users,
         message: messagesArr
       })
     );
+
+    dispatch(ShowChat("translateX(-50%)"))
   };
 
   useEffect(()=>{

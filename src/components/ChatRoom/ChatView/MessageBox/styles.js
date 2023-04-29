@@ -11,6 +11,10 @@ export const Container = styled.div`
 
     justify-items: ${props => props.position.justifyItem};;
     align-items: start;
+
+    ::-webkit-scrollbar {
+      width: 0;
+    }
 `
 
 export const AvatarIcon = styled(Avatar)`
@@ -39,4 +43,6 @@ export const MessageWrapper = styled.div`
     background: ${props => props.theme.primaryColor};
 
     font-weight: normal;
+
+    
 `

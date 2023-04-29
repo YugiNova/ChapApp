@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -12,6 +11,10 @@ export const Container = styled.div`
   padding-bottom: 0;
 
   background: ${(props) => props.theme.listBg};
+
+  @media screen and (min-width: 300px) and (max-width: 600px){
+    
+  }
 `;
 
 export const Header = styled.div`

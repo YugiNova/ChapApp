@@ -5,3 +5,5 @@ export const getConversationList = (state) => state.conversationList;
 export const getConversation = (state) => state.conversation;
 
 export const getTheme = (state) => state.theme;
+
+export const changeChat = (state) => state.showChat;

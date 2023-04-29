@@ -4,6 +4,10 @@ export const Container = styled.div`
     width: 100%;
     height: calc(100vh - 8.5rem);
     overflow-y: scroll;
+
+    ::-webkit-scrollbar {
+      width: 0;
+    }
 `
 
 export const ChatWrapper = styled.div`

@@ -32,3 +32,10 @@ export const UpdateTheme = (data) => {
         payload: data
     }
 }
+
+export const ShowChat = (data) => {
+    return{
+        type:`chat/show`,
+        payload: data
+    }
+}

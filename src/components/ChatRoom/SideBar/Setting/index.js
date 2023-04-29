@@ -8,7 +8,7 @@ const SettingButton = () => {
     const theme = useSelector(getTheme);
 
     return(
-        <Container to={"/"} theme={theme}><MdSettings/></Container>
+        <Container theme={theme}><MdSettings/></Container>
     )
 }
 

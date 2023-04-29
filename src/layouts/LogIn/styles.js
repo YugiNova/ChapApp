@@ -6,6 +6,9 @@ export const Layout = styled.div`
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: 100vh;
 
+    @media screen and (min-width: 300px) and (max-width: 600px){
+        grid-template-columns: 1fr;
+    }
 `
 
 export const CoverImage = styled.div`
@@ -21,6 +24,10 @@ export const CoverImage = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (min-width: 300px) and (max-width: 600px){
+        display: none;
+    }
 `
 
 export const Title = styled.h2`
@@ -32,5 +39,11 @@ export const Title = styled.h2`
 `
 
 export const FormContainer = styled.div`
+    grid-row: 1/2;
+    grid-column: 2/3;
 
+    @media screen and (min-width: 300px) and (max-width: 600px){
+        grid-row: 1/2;
+        grid-column: 1/2;
+    }
 `

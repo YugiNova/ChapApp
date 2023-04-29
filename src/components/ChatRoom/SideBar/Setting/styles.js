@@ -8,6 +8,10 @@ export const Container = styled(NavLink)`
   border-radius: 1rem;
   transition: 0.5s ease;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   svg {
     color: ${(props) => props.theme.secondaryFont};
     font-size: 1.25rem;

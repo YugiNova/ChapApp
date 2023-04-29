@@ -14,7 +14,7 @@ import {
 } from "../../../redux/selector";
 import { db } from "../../../firebase/config";
 import { UpdateConversationList } from "../../../redux/action";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ConversationItem from "./ConversationItem";
 import { Container, Header, List, SearchBar, Title } from "./styles";
 import { SearchOutlined } from "@ant-design/icons";
@@ -24,6 +24,7 @@ const Conversations = () => {
   const conversationList = useSelector(getConversationList);
   const dispatch = useDispatch();
   const theme = useSelector(getTheme);
+  const [keyword,setKeyword] = useState("")
 
   const getConversList = () => {
     let conversList = [];
@@ -49,16 +50,30 @@ const Conversations = () => {
       getConversList();
     }
   }, []);
+  
+  const searchConversationList = useMemo(() => {
+    if(keyword !== ""){
+      const newList = conversationList.filter(()=>{
+        
+      })
+    }else{
+      return conversationList
+    }
+  },[keyword,conversationList])
 
   useEffect(() => {
     // console.log(conversationList);
   }, [conversationList]);
 
+  const onSearch = (e) => {
+    setKeyword(e.target.value)
+  }
+
   return (
     <Container theme={theme}>
       <Header theme={theme}>
         <Title theme={theme}>Chats</Title>
-        <SearchBar theme={theme} suffix={<SearchOutlined />} />
+        <SearchBar onChange={onSearch} theme={theme} suffix={<SearchOutlined />} />
       </Header>
       <List theme={theme}>
         {conversationList === []? "": conversationList.map((item) => {

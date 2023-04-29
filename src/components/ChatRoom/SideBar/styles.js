@@ -10,6 +10,12 @@ export const Container = styled.div`
 
   background: ${(props) => props.theme.sidebarBg};
   padding: 1rem 0.5rem;
+
+  @media screen and (min-width: 300px) and (max-width: 600px){
+    width: 100%;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 1fr;
+  }
 `;
 
 export const UserIcon = styled.div`
@@ -19,6 +25,16 @@ export const UserIcon = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: center;
+
+  @media screen and (min-width: 300px) and (max-width: 600px){
+    grid-column: 1/2;
+    grid-row: 1/2;
+
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const ChatGroup = styled.div`
@@ -28,6 +44,16 @@ export const ChatGroup = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 300px) and (max-width: 600px){
+    grid-column: 2/3;
+    grid-row: 1/2;
+
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const ChatItem = styled(NavLink)`
@@ -64,4 +90,14 @@ export const SettingGroup = styled.div`
   flex-direction: column;
   justify-content: end;
   align-items: center;
+
+  @media screen and (min-width: 300px) and (max-width: 600px){
+    grid-column: 3/4;
+    grid-row: 1/2;
+
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;

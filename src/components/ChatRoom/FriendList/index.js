@@ -11,7 +11,7 @@ import {
   ButtonWrapper,
 } from "./styles";
 import { getTheme, getUser } from "../../../redux/selector";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../../firebase/config";
 import FriendCard from "./FriendCard";
@@ -29,6 +29,7 @@ const FriendList = () => {
   const [friendList, setFriendList] = useState([]);
   const userProfileRef = collection(db, "users_profile");
   const theme = useSelector(getTheme);
+  const [keyword, setKeyword] = useState("")
 
   const getFriendsName = async () => {
     const q = query(userProfileRef, where("email", "in", user.friend_list));
@@ -48,6 +49,19 @@ const FriendList = () => {
     }
   }, [user]);
 
+  //search handle
+  const SearchFriendList =  useMemo(()=>{
+    if(keyword !== "" && friendList.length > 0){
+      const newFriendList = friendList.filter(item => {
+        return item.displayName.includes(keyword)
+      })
+      return newFriendList
+    }
+    else{
+      return friendList
+    }
+  },[keyword,friendList])
+
   const onAddFriend = () => {
     setOpenAddFriendModal(true);
   };
@@ -56,11 +70,15 @@ const FriendList = () => {
     setOpenInvitation(true);
   };
 
+  const onSearch = (e) => {
+    setKeyword(e.target.value)
+  }
+
   return (
     <Container theme={theme}>
       <Header theme={theme}>
         <Title theme={theme}>Friends List</Title>
-        <SearchBar theme={theme} suffix={<SearchOutlined />} />
+        <SearchBar onChange={onSearch} theme={theme} suffix={<SearchOutlined />} />
       </Header>
 
       <Options theme={theme}>
@@ -89,7 +107,7 @@ const FriendList = () => {
       />
 
       <List theme={theme}>
-        {friendList.map((item) => {
+        {SearchFriendList.map((item) => {
           return <FriendCard friend={item} theme={theme} />;
         })}
       </List>
