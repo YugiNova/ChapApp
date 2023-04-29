@@ -1,3 +1,4 @@
+import { Avatar } from "antd";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
@@ -15,6 +16,8 @@ export const Container = styled.div`
     width: 100%;
     grid-template-columns: auto auto auto;
     grid-template-rows: 1fr;
+    align-items: center;
+    justify-items: center;
   }
 `;
 
@@ -36,6 +39,14 @@ export const UserIcon = styled.div`
     justify-content: space-between;
   }
 `;
+
+export const AvatarIcon = styled(Avatar)`
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+`
 
 export const ChatGroup = styled.div`
   grid-column: 1/2;

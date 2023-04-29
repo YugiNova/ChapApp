@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-export const Container = styled(NavLink)`
+export const Container = styled.button`
   text-decoration: none;
   background: transparent;
   padding: 0.75rem;
@@ -11,6 +11,8 @@ export const Container = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  border: none;
 
   svg {
     color: ${(props) => props.theme.secondaryFont};
