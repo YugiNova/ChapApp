@@ -65,7 +65,7 @@ const SignIn = () => {
           name="email"
           rules={[{ required: true, message: "Email is required" }]}
         >
-          <InputField margin={"0"} placeholder=" " suffix={"Name"}/>
+          <InputField margin={"0"} placeholder=" " suffix={"Email"}/>
           
         </InputBox>
         <InputBox

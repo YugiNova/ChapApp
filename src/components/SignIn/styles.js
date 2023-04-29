@@ -40,9 +40,10 @@ export const InputField = styled(Input)`
 
     input:not(:placeholder-shown) + .ant-input-suffix,
     &:focus-within .ant-input-suffix{
-        transform: translateY(-80%);
+        transform: translateY(-60%);
         padding: 0 0.5rem;
         color: #4096ff;
+        height:auto;
     }
 
     .ant-input-suffix{
@@ -50,11 +51,16 @@ export const InputField = styled(Input)`
         z-index: 1;
         background-color: white;
         margin: 0;
-        top: 15%;
+        top: 0;
         left: 1rem;
+        height: 100%; 
         transition: 0.5s ease;
         color: #d9d9d9;
         border-radius: 1rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .ant-input-prefix{

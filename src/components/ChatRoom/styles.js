@@ -28,9 +28,7 @@ export const Container = styled.div`
     overflow-y: hidden;
     transform: ${(props) => props.translateX};
 
-    ::-webkit-scrollbar {
-      width: 0;
-    }
+    
   }
 `;
 

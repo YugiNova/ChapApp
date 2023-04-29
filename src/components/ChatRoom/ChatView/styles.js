@@ -16,8 +16,6 @@ export const Container = styled.div`
   @media screen and (min-width: 300px) and (max-width: 600px) {
     border-left: none;
 
-    ::-webkit-scrollbar {
-      width: 0;
-    }
+    
   }
 `;
