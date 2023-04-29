@@ -12,9 +12,6 @@ export const Container = styled.div`
     justify-items: ${props => props.position.justifyItem};;
     align-items: start;
 
-    ::-webkit-scrollbar {
-      width: 0;
-    }
 `
 
 export const AvatarIcon = styled(Avatar)`
@@ -23,6 +20,9 @@ export const AvatarIcon = styled(Avatar)`
 
     width: 2.5rem;
     height:2.5rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export const MessageWrapper = styled.div`
